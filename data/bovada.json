@@ -10,7 +10,7 @@
   "audit": {
     "last_verified": "2026-03-22",
     "data_sources": [
-      "Bovada Official FAQ & Cashier (2026)",
+      "Bovada Official Help Center & Cashier (2026)",
       "Morris Mohawk Licensing Records"
     ]
   },
@@ -21,7 +21,7 @@
   },
   "seo": {
     "title": "Bovada Withdrawal Guide 2026 | Fees, Limits & Times",
-    "description": "Exactly how to withdraw from Bovada. Breakdown of Bitcoin limits, check courier fees, payout times, and mandatory KYC verification requirements."
+    "description": "Complete Bovada withdrawal breakdown — Bitcoin, Litecoin, Ethereum, USDT, BSV, BCH. Per-transaction limits, weekly caps, processing times, and KYC requirements for 2026."
   },
   "features": {
     "allows_corporate_accounts": false,
@@ -33,26 +33,58 @@
   },
   "withdrawal_methods": [
     {
-      "method": "Bitcoin (BTC)",
-      "slug": "bitcoin",
+      "method": "High-Limit Crypto",
+      "slug": "high-limit-crypto",
       "available": true,
       "fee_amount": 0.0,
-      "fee_display": "$0",
-      "processing_hours": 1.5,
-      "processing_display": "Within 24 hours (usually 1-2 hrs)",
-      "minimum": "$10",
+      "fee_display": "$0 (exchange gas only)",
+      "processing_hours": 24.0,
+      "processing_time_iso": "PT24H",
+      "processing_display": "BTC: up to 24 hours | LTC/BSV: ~1 hour",
+      "min_amount_usd": 10,
+      "max_amount_usd": 9500,
+      "minimum": "$10 – $75",
       "maximum": "$9,500 per transaction",
       "recommended": true,
-      "pro_tip": "Always withdraw to an intermediary non-custodial wallet (like Exodus) before sending to Coinbase. Coinbase frequently bans accounts receiving direct gambling deposits."
+      "variants": [
+        {"name": "Bitcoin", "ticker": "BTC", "max_note": "$9,500/tx · $90K/wk"},
+        {"name": "Litecoin", "ticker": "LTC", "max_note": "$9,500/tx · $180K/wk"},
+        {"name": "Bitcoin SV", "ticker": "BSV", "max_note": "$9,500/tx"}
+      ],
+      "pro_tip": "Litecoin has the highest weekly cap ($180K) and settles in under a minute. For large cashouts, LTC is strictly superior to BTC. Always withdraw to a non-custodial wallet (Exodus, Trust Wallet) before transferring to Coinbase — direct gambling deposits trigger account bans."
+    },
+    {
+      "method": "Standard Crypto",
+      "slug": "standard-crypto",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0 (exchange gas only)",
+      "processing_hours": 1.0,
+      "processing_time_iso": "PT1H",
+      "processing_display": "~1 hour after approval",
+      "min_amount_usd": 50,
+      "max_amount_usd": 2500,
+      "minimum": "$50",
+      "maximum": "$2,500 per transaction",
+      "recommended": false,
+      "variants": [
+        {"name": "Ethereum", "ticker": "ETH", "max_note": "$2,500/tx · $2,500/wk"},
+        {"name": "Tether", "ticker": "USDT", "max_note": "$2,500/tx · $2,500/wk"},
+        {"name": "Bitcoin Cash", "ticker": "BCH", "max_note": "$2,500/tx · $2,500/wk"}
+      ],
+      "pro_tip": "ETH, USDT, and BCH have a hard $2,500 weekly cap — significantly lower than BTC/LTC. Only use these for small payouts. If you need more than $2,500/week, switch to Bitcoin or Litecoin."
     },
     {
       "method": "Check by Courier",
-      "slug": "check",
+      "slug": "check-courier",
       "available": true,
       "fee_amount": 100.0,
       "fee_display": "$100",
       "processing_hours": 360.0,
+      "processing_time_iso": "P15D",
       "processing_display": "10-15 Business Days",
+      "min_amount_usd": 100,
+      "max_amount_usd": 3000,
       "minimum": "$100",
       "maximum": "$3,000 per transaction",
       "recommended": false,
@@ -73,7 +105,8 @@
     "overall_rating": "B+",
     "common_delays": [
       "Attempting to withdraw before completing bonus rollover",
-      "KYC pending status"
+      "KYC pending status",
+      "1-every-3-day crypto payout restriction (recent policy change)"
     ],
     "rollover_rules": "All cash deposits have a mandatory 1x rollover before withdrawal to prevent money laundering.",
     "cancellation_window": "Can be reversed while 'Pending' (typically a 12-24 hour window)."
@@ -86,15 +119,19 @@
   "faqs": [
     {
       "question": "How long does a Bovada Bitcoin withdrawal take?",
-      "answer": "Bovada states Bitcoin withdrawals take up to 24 hours, but most users receive their funds in 1 to 2 hours after the request is approved."
+      "answer": "Bovada states Bitcoin withdrawals take up to 24 hours, but most users receive their funds in 1 to 2 hours after the request is approved. Litecoin and Ethereum withdrawals typically arrive within 1 hour."
+    },
+    {
+      "question": "What are Bovada's weekly crypto withdrawal limits?",
+      "answer": "Litecoin has the highest weekly limit at $180,000. Bitcoin allows up to $90,000/week. Ethereum, USDT, and Bitcoin Cash are capped at $2,500/week — making them unsuitable for large cashouts."
     },
     {
       "question": "Does Bovada charge withdrawal fees?",
-      "answer": "Cryptocurrency withdrawals are completely free. If you request a Check by Courier, the fee is $100, though they waive the fee for one non-crypto withdrawal every 90 days."
+      "answer": "Cryptocurrency withdrawals are completely free from Bovada's side — you only pay blockchain network gas fees. Check by Courier costs $100, though Bovada waives the fee for one non-crypto withdrawal every 90 days."
     },
     {
       "question": "Why was my Bovada withdrawal denied?",
-      "answer": "The most common reasons for a denied payout are unverified identity (KYC not complete), trying to withdraw active bonus funds before meeting rollover requirements, or entering an invalid crypto address."
+      "answer": "The most common reasons are: unverified identity (KYC not complete), attempting to withdraw active bonus funds before meeting rollover requirements, entering an invalid crypto address, or hitting the one-withdrawal-every-3-days limit."
     }
   ]
 }

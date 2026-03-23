@@ -36,6 +36,9 @@ def validate_ymyl_schema(data: Dict[str, Any], slug: str) -> None:
     for method in data.get("withdrawal_methods", []):
         assert isinstance(method.get("fee_amount"), (int, float)), f"{CLI.FAIL}[{slug}] {method['slug']} fee_amount must be a computable float.{CLI.RESET}"
         assert isinstance(method.get("processing_hours"), (int, float)), f"{CLI.FAIL}[{slug}] {method['slug']} processing_hours must be a computable float.{CLI.RESET}"
+        assert isinstance(method.get("min_amount_usd"), (int, float)), f"{CLI.FAIL}[{slug}] {method['slug']} min_amount_usd must be a computable integer.{CLI.RESET}"
+        assert isinstance(method.get("max_amount_usd"), (int, float)), f"{CLI.FAIL}[{slug}] {method['slug']} max_amount_usd must be a computable integer.{CLI.RESET}"
+        assert isinstance(method.get("processing_time_iso"), str) and method["processing_time_iso"].startswith("P"), f"{CLI.FAIL}[{slug}] {method['slug']} processing_time_iso must be ISO-8601 duration (e.g. PT24H, P7D).{CLI.RESET}"
 
 def generate_schema_graph(data: Dict[str, Any], url: str, iso_date: str) -> str:
     """Constructs a deterministic, minified JSON-LD @graph."""
@@ -89,6 +92,27 @@ def generate_schema_graph(data: Dict[str, Any], url: str, iso_date: str) -> str:
             }
         ]
     }
+    # Inject service-level offers with ISO durations for each withdrawal method
+    for method in data.get("withdrawal_methods", []):
+        offer: Dict[str, Any] = {
+            "@type": "Offer",
+            "name": method["method"],
+            "price": method["fee_amount"],
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock" if method.get("available") else "https://schema.org/Discontinued"
+        }
+        if method.get("processing_time_iso"):
+            offer["deliveryLeadTime"] = {
+                "@type": "QuantitativeValue",
+                "value": method["processing_time_iso"]
+            }
+        if method.get("max_amount_usd"):
+            offer["eligibleTransactionVolume"] = {
+                "@type": "PriceSpecification",
+                "maxPrice": method["max_amount_usd"],
+                "priceCurrency": "USD"
+            }
+        graph["@graph"].append(offer)
     # sort_keys=True guarantees deterministic byte-output for identical data
     return json.dumps(graph, separators=(',', ':'), sort_keys=True) 
 
