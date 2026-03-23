@@ -100,8 +100,8 @@ def main() -> None:
     PUBLIC_DIR.mkdir(parents=True)
     
     # Copy external CSS to public root (CSP: style-src 'self' requires external file)
-    css_source: Path = TEMPLATES_DIR / "platform-hub.css"
-    shutil.copy2(css_source, PUBLIC_DIR / "platform-hub.css")
+    for css_name in ("platform-hub.css", "index-hub.css"):
+        shutil.copy2(TEMPLATES_DIR / css_name, PUBLIC_DIR / css_name)
     
     # Strip Jinja whitespace to minimize wire payload
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True, trim_blocks=True, lstrip_blocks=True)
@@ -113,6 +113,7 @@ def main() -> None:
         sys.exit(1)
     
     sitemap_urls: List[Dict[str, str]] = []
+    hub_platforms: List[Dict[str, Any]] = []
 
     for json_file in sorted(DATA_DIR.glob("*.json")):
         with open(json_file, "r", encoding="utf-8") as f:
@@ -146,8 +147,38 @@ def main() -> None:
             with open(platform_dir / "index.html", "w", encoding="utf-8") as out_f:
                 out_f.write(html_output)
             print(f"  {CLI.OK}✔ Mastered:{CLI.RESET} /{slug}/")
+            hub_platforms.append({
+                "slug": slug,
+                "platform_name": data["platform_name"],
+                "platform_type": data["platform_type"],
+                "regulated": data["regulated"],
+                "method_count": len(data["withdrawal_methods"]),
+            })
         except Exception as e:
             print(f"  {CLI.FAIL}❌ Render Failed:{CLI.RESET} /{slug}/ -> {e}")
+
+    # --- Hub Index Page ---
+    try:
+        index_template = env.get_template("index-hub.html")
+        latest_date: str = max(u["lastmod"] for u in sitemap_urls) if sitemap_urls else ""
+        hub_ld: str = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "WithdrawalGuide",
+            "url": SITE_URL,
+            "description": "Compare withdrawal methods, fees, limits, and processing times across major sportsbooks."
+        }, separators=(',', ':'), sort_keys=True)
+        hub_html = index_template.render(
+            platforms=hub_platforms,
+            audit_date=latest_date[:10] if latest_date else "N/A",
+            json_ld=hub_ld
+        )
+        with open(PUBLIC_DIR / "index.html", "w", encoding="utf-8") as f:
+            f.write(hub_html)
+        print(f"  {CLI.OK}✔ Mastered:{CLI.RESET} / (Hub Index)")
+        sitemap_urls.insert(0, {"loc": f"{SITE_URL}/", "lastmod": latest_date})
+    except Exception as e:
+        print(f"  {CLI.FAIL}❌ Hub Index Failed:{CLI.RESET} -> {e}")
 
     # XML Generation (Perfectly Escaped)
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

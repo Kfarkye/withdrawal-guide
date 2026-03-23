@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sportsbook Withdrawal Guides — Fees, Limits &amp; Processing Times (2026)</title>
+<meta name="description" content="Compare withdrawal methods, fees, limits, and processing times across every major sportsbook and prediction market. Research-backed data updated for 2026.">
+<link rel="canonical" href="https://www.withdrawalguide.com/">
+<link rel="stylesheet" href="/platform-hub.css">
+<link rel="stylesheet" href="/index-hub.css">
+<script type="application/ld+json">{{ json_ld }}</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="hub-header">
+    <div class="hub-header-inner">
+        <span class="hub-wordmark">WithdrawalGuide</span>
+        <nav class="hub-nav" aria-label="Primary">
+            <a href="/">Guides</a>
+            <a href="/about">About</a>
+        </nav>
+    </div>
+</header>
+
+<div class="hub-hero">
+    <h1 class="hub-hero-title">Sportsbook Withdrawal<br>Guides for 2026</h1>
+    <p class="hub-hero-subtitle">Compare fees, limits, processing times, and security holds across every major sportsbook and prediction market — organized by platform.</p>
+</div>
+
+<main id="main-content" tabindex="-1">
+    <div class="hub-container">
+        <div class="hub-section-label">Platforms</div>
+        <div class="hub-grid">
+            {% for platform in platforms %}
+            <a href="/{{ platform.slug }}/" class="hub-card">
+                <div class="hub-card-content">
+                    <span class="hub-card-name">{{ platform.platform_name }}</span>
+                    <span class="hub-card-meta">
+                        {% if platform.regulated %}
+                        <span class="hub-tag hub-tag-regulated">US Regulated</span>
+                        {% elif platform.platform_type == 'prediction_market' %}
+                        <span class="hub-tag hub-tag-prediction">Prediction Market</span>
+                        {% else %}
+                        <span class="hub-tag hub-tag-offshore">Offshore</span>
+                        {% endif %}
+                        · {{ platform.method_count }} withdrawal method{{ 's' if platform.method_count != 1 else '' }}
+                    </span>
+                </div>
+                <span class="hub-card-chevron" aria-hidden="true">›</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+<footer class="hub-footer">
+    <p>Data verified {{ audit_date }}. For informational purposes only — not financial advice.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+/* === Hub Index Page === */
+
+/* Header */
+.hub-header {
+    border-bottom: 1px solid var(--border-line);
+    background: var(--bg-surface);
+}
+.hub-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hub-wordmark {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-main);
+}
+.hub-nav {
+    display: flex;
+    gap: var(--space-6);
+    font-size: 0.875rem;
+}
+.hub-nav a {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.hub-nav a:hover {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+/* Hero */
+.hub-hero {
+    max-width: 640px;
+    padding: var(--space-12) var(--space-6) var(--space-8);
+}
+.hub-hero-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-4);
+    text-wrap: balance;
+    color: var(--text-main);
+}
+.hub-hero-subtitle {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 48ch;
+}
+
+/* Container */
+.hub-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-12);
+}
+
+/* Section Label */
+.hub-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid var(--border-line);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    background: var(--bg-surface);
+}
+
+/* Card Grid */
+.hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-line);
+    border-radius: 0 0 12px 12px;
+    background: var(--bg-surface);
+    overflow: hidden;
+}
+@media (max-width: 640px) {
+    .hub-grid { grid-template-columns: 1fr; }
+}
+
+/* Individual Card */
+.hub-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6);
+    border-bottom: 1px solid var(--border-line);
+    border-right: 1px solid var(--border-line);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: background-color 0.15s var(--ease-out);
+}
+.hub-card:hover {
+    background-color: var(--bg-base);
+    text-decoration: none;
+}
+.hub-card:focus-visible {
+    outline: 3px solid var(--ring-focus);
+    outline-offset: -3px;
+    border-radius: 0;
+}
+
+/* Remove right border on even cards (right column) */
+.hub-card:nth-child(2n) {
+    border-right: none;
+}
+/* Remove bottom border on last row */
+.hub-grid .hub-card:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+/* Single column: remove all right borders, only last child has no bottom */
+@media (max-width: 640px) {
+    .hub-card { border-right: none; }
+    .hub-grid .hub-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border-line); }
+    .hub-grid .hub-card:last-child { border-bottom: none; }
+}
+
+.hub-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+.hub-card-name {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+.hub-card-meta {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+.hub-card-chevron {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: transform 0.15s var(--ease-out);
+}
+.hub-card:hover .hub-card-chevron {
+    transform: translateX(4px);
+    color: var(--text-main);
+}
+
+/* Tags */
+.hub-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+.hub-tag-regulated {
+    background: var(--signal-good-bg);
+    color: var(--signal-good);
+}
+.hub-tag-offshore {
+    background: var(--signal-warn-bg);
+    color: var(--signal-warn);
+}
+.hub-tag-prediction {
+    background: #EDE9FE;
+    color: #6D28D9;
+}
+@media (prefers-color-scheme: dark) {
+    .hub-tag-prediction {
+        background: #2E1065;
+        color: #A78BFA;
+    }
+}
+
+/* Footer */
+.hub-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-line);
+}
+
+/* Print */
+@media print {
+    .hub-header, .hub-footer { display: none; }
+    .hub-hero { padding: 12pt 0; }
+    .hub-grid { border: 1px solid #ccc; }
+    .hub-card { border-color: #ccc; }
+}
