@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <title>{{ seo.title }}</title>
+    <meta name="description" content="{{ seo.description }}">
+    
+    <link rel="canonical" href="{{ computed.canonical_url }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAFA">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617">
+
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta property="og:url" content="{{ computed.canonical_url }}">
+    <meta property="og:type" content="article">
+
+    <script type="application/ld+json">
+        {{ computed.json_ld_graph | safe }}
+    </script>
+
+    <link rel="stylesheet" href="/platform-hub.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/platforms/">Sportsbooks</a></li>
+        <li aria-current="page">{{ platform_name }} Withdrawals</li>
+    </ol>
+</nav>
+
+<header class="hero" role="banner">
+    <h1 id="page-title" class="hero-title">{{ platform_name }} Withdrawals</h1>
+    <p class="hero-subtitle">Complete technical breakdown of limits, speeds, and mandatory security holds for {{ audit.last_verified[:4] }}.</p>
+    
+    <div class="eeat-meta" aria-label="Article verification details">
+        <div>
+            <svg class="icon-verify" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <strong>Data Audited:</strong> <time datetime="{{ computed.iso_date_time }}">{{ audit.last_verified }}</time>
+        </div>
+        <div>
+            <strong>Primary Source:</strong> {{ audit.data_sources[0] }}
+        </div>
+        {% if authorship %}
+        <div>
+            <strong>Reviewed By:</strong> {{ authorship.reviewer_name }}
+        </div>
+        {% endif %}
+    </div>
+</header>
+
+<div class="wrapper">
+    <main id="main-content" tabindex="-1" role="main" aria-labelledby="page-title">
+        
+        <section aria-labelledby="methods-heading">
+            <h2 id="methods-heading" class="section-title">Approved Withdrawal Methods</h2>
+            
+            {% for method in withdrawal_methods %}
+            <article class="card">
+                <header class="card-header">
+                    <h3 class="card-title">{{ method.method }}</h3>
+                    {% if method.recommended %}<span class="badge">Recommended</span>{% endif %}
+                </header>
+                
+                <dl class="data-grid">
+                    <div class="data-group">
+                        <dt class="data-term">Processing Time</dt>
+                        <dd class="data-desc"><data value="{{ method.processing_hours }}">{{ method.processing_display }}</data></dd>
+                    </div>
+                    <div class="data-group">
+                        <dt class="data-term">Network/Platform Fee</dt>
+                        <dd class="data-desc"><data value="{{ method.fee_amount }}">{{ method.fee_display }}</data></dd>
+                    </div>
+                    <div class="data-group">
+                        <dt class="data-term">Minimum Limit</dt>
+                        <dd class="data-desc">{{ method.minimum }}</dd>
+                    </div>
+                    <div class="data-group">
+                        <dt class="data-term">Maximum Limit</dt>
+                        <dd class="data-desc">{{ method.maximum }}</dd>
+                    </div>
+                </dl>
+
+                {% if method.pro_tip %}
+                <aside class="alert-box" role="note" aria-label="Security Notice">
+                    <strong class="alert-title">Compliance & Security Note</strong>
+                    <p class="alert-body">{{ method.pro_tip }}</p>
+                </aside>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </section>
+
+        <section aria-labelledby="kyc-heading">
+            <h2 id="kyc-heading" class="section-title">Identity Verification (KYC)</h2>
+            <div class="card">
+                <dl class="data-grid">
+                    <div class="data-group">
+                        <dt class="data-term">KYC Trigger Event</dt>
+                        <dd class="data-desc">{{ verification.kyc_trigger }}</dd>
+                    </div>
+                    <div class="data-group">
+                        <dt class="data-term">Processing Window</dt>
+                        <dd class="data-desc">{{ verification.processing_time }}</dd>
+                    </div>
+                </dl>
+                
+                <h3 class="list-title">Mandatory Documents</h3>
+                <ul class="list-docs">
+                    {% for doc in verification.documents_needed %}
+                    <li>{{ doc }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        {% if features and features.tax_reporting %}
+        <section aria-labelledby="tax-heading">
+            <h2 id="tax-heading" class="section-title">Tax & Corporate Reporting</h2>
+            <div class="card">
+                <dl class="data-grid">
+                    <div class="data-group">
+                        <dt class="data-term">Corporate Accounts (LLC)</dt>
+                        <dd class="data-desc {{ 'status-positive' if features.allows_corporate_accounts else 'status-neutral' }}">
+                            {{ "Supported" if features.allows_corporate_accounts else "Prohibited" }}
+                        </dd>
+                    </div>
+                    <div class="data-group">
+                        <dt class="data-term">IRS Form Issued</dt>
+                        <dd class="data-desc">{{ features.tax_reporting.form_type }}</dd>
+                    </div>
+                </dl>
+                <p class="tax-notes">
+                    {{ features.tax_reporting.notes }}
+                </p>
+            </div>
+        </section>
+        {% endif %}
+
+        <section aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+            {% for faq in faqs %}
+            <details>
+                <summary>{{ faq.question }}</summary>
+                <div class="details-content">
+                    {{ faq.answer }}
+                </div>
+            </details>
+            {% endfor %}
+        </section>
+        
+    </main>
+
+    <aside class="sidebar" role="complementary" aria-label="Platform Summary">
+        <section class="sidebar-panel">
+            <h3 class="sidebar-title">Platform Intelligence</h3>
+            <ul class="sidebar-list">
+                <li><strong class="text-muted">Operating Entity</strong> <span class="text-semibold">{{ board.name }}</span></li>
+                <li>
+                    <strong class="text-muted">Regulated Status</strong> 
+                    <span class="text-semibold {{ 'status-positive' if regulated else 'status-negative' }}">
+                        {{ "US Regulated" if regulated else "Offshore" }}
+                    </span>
+                </li>
+                <li><strong class="text-muted">Geo-Model</strong> <span class="text-semibold text-capitalize">{{ jurisdictions.operating_model }}</span></li>
+                <li><strong class="text-muted">Fastest Route</strong> <span class="text-semibold">{{ computed.fastest.method }}</span></li>
+            </ul>
+        </section>
+    </aside>
+</div>
+
+</body>
+</html>

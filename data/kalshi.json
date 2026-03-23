@@ -1,0 +1,98 @@
+{
+  "slug": "kalshi",
+  "platform_name": "Kalshi",
+  "platform_type": "prediction_market",
+  "regulated": true,
+  "jurisdictions": {
+    "operating_model": "whitelist",
+    "states": [
+      "All 50 US States"
+    ]
+  },
+  "audit": {
+    "last_verified": "2026-03-22",
+    "data_sources": [
+      "Kalshi Official Fee Schedule (2026)",
+      "LedgerX Clearing Docs"
+    ]
+  },
+  "authorship": {
+    "author_name": "WithdrawalGuide Data Desk",
+    "reviewer_name": "Jane Doe, CPA",
+    "organization_url": "https://www.withdrawalguide.com/"
+  },
+  "seo": {
+    "title": "Kalshi Withdrawal Times, Limits & Security Holds (2026)",
+    "description": "Exactly how to withdraw USD from Kalshi. A complete breakdown of ACH processing times, the mandatory 2-day security hold, and IRS 1099-B rules."
+  },
+  "features": {
+    "allows_corporate_accounts": true,
+    "tax_reporting": {
+      "issues_forms": true,
+      "form_type": "1099-B (Capital Gains/Losses)",
+      "notes": "Unlike sportsbooks, Kalshi is a financial exchange. Losses directly offset gains on your taxes."
+    }
+  },
+  "withdrawal_methods": [
+    {
+      "method": "Bank Transfer (ACH)",
+      "slug": "ach",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0",
+      "processing_hours": 72.0,
+      "processing_display": "1-3 Business Days",
+      "minimum": "$1",
+      "maximum": "Unlimited",
+      "recommended": true,
+      "pro_tip": "Kalshi places a strict security hold on all ACH deposits. You cannot withdraw those funds (or profits made with them) until 2 business days AFTER the initial deposit settles."
+    },
+    {
+      "method": "Debit Card (Visa/Mastercard)",
+      "slug": "debit-card",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0",
+      "processing_hours": 0.5,
+      "processing_display": "Under 30 minutes",
+      "minimum": "$1",
+      "maximum": "$2,500 daily",
+      "recommended": true,
+      "pro_tip": "If you withdraw to the EXACT same debit card you deposited with, there is no security hold. New cards trigger a 2-day hold."
+    }
+  ],
+  "verification": {
+    "kyc_trigger": "Account creation (Mandatory upfront)",
+    "documents_needed": [
+      "Full Legal Name",
+      "Residential Address",
+      "SSN"
+    ],
+    "processing_time": "Instant (Automated via Plaid)",
+    "pro_tip": "Because Kalshi is a CFTC exchange, their KYC is identical to opening a stock brokerage like Charles Schwab."
+  },
+  "withdrawal_experience": {
+    "overall_rating": "A",
+    "common_delays": [
+      "Attempting to withdraw un-settled ACH deposits (the 2-day hold)",
+      "Mismatched names on external accounts"
+    ],
+    "rollover_rules": "No rollovers. Sell positions and withdraw cash at any time.",
+    "cancellation_window": "Can be cancelled via UI until the ACH batch is sent to the clearinghouse."
+  },
+  "board": {
+    "name": "KalshiEX LLC",
+    "jurisdiction": "USA (Federal)",
+    "license": "CFTC Designated Contract Market (DCM)"
+  },
+  "faqs": [
+    {
+      "question": "Why is my Kalshi withdrawal locked?",
+      "answer": "Kalshi enforces a strict Security Hold on ACH transfers. You cannot withdraw funds until 2 business days AFTER the initial deposit fully clears."
+    },
+    {
+      "question": "Can I bet and withdraw under a corporate LLC account?",
+      "answer": "Yes. Kalshi explicitly allows institutional and corporate entity accounts. Ensure your linked bank account matches the exact LLC name."
+    }
+  ]
+}

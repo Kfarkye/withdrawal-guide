@@ -1,0 +1,98 @@
+{
+  "slug": "polymarket",
+  "platform_name": "Polymarket",
+  "platform_type": "prediction_market",
+  "regulated": false,
+  "jurisdictions": {
+    "operating_model": "blacklist",
+    "states": ["All US States"]
+  },
+  "audit": {
+    "last_verified": "2026-03-22",
+    "data_sources": [
+      "Polymarket Official Docs (2026)",
+      "Polygon Network Explorer Data"
+    ]
+  },
+  "authorship": {
+    "author_name": "WithdrawalGuide Data Desk",
+    "reviewer_name": "Jane Doe, CPA",
+    "organization_url": "https://www.withdrawalguide.com/"
+  },
+  "seo": {
+    "title": "Polymarket USDC Withdrawal Guide | Fees & Speeds",
+    "description": "Learn how to bridge your USDC off Polygon from Polymarket quickly and cheaply to centralized exchanges."
+  },
+  "features": {
+    "allows_corporate_accounts": false,
+    "tax_reporting": {
+      "issues_forms": false,
+      "form_type": "None (Decentralized Protocol)",
+      "notes": "Polymarket is a DeFi protocol and does not issue tax forms. Users must self-report crypto gains/losses per IRS guidance on digital assets."
+    }
+  },
+  "withdrawal_methods": [
+    {
+      "method": "USDC.e (Polygon Network)",
+      "slug": "usdc-polygon",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0 (Network Gas Only)",
+      "processing_hours": 0.01,
+      "processing_display": "Instant (seconds)",
+      "minimum": "None",
+      "maximum": "No Limit",
+      "recommended": true,
+      "pro_tip": "Ensure your receiving exchange (like Coinbase or Kraken) supports USDC deposits directly on the Polygon network. Do NOT send to an Ethereum ERC-20 address or funds will be permanently lost."
+    },
+    {
+      "method": "Cross-Chain Bridge (Ethereum/Solana)",
+      "slug": "multi-chain",
+      "available": true,
+      "fee_amount": 0.5,
+      "fee_display": "Varies by destination chain",
+      "processing_hours": 0.08,
+      "processing_display": "Under 5 minutes",
+      "minimum": "None",
+      "maximum": "$50,000+ requires caution (slippage)",
+      "recommended": false,
+      "pro_tip": "For massive withdrawals (over $50,000), break it into smaller transactions to minimize slippage in the Uniswap bridging pool."
+    }
+  ],
+  "verification": {
+    "kyc_trigger": "Only required if using 3rd party fiat on-ramps like MoonPay",
+    "documents_needed": [
+      "None for direct crypto interaction"
+    ],
+    "processing_time": "N/A",
+    "pro_tip": "Polymarket relies on Web3 proxy wallets. You control your keys, meaning no central authority asks for your ID."
+  },
+  "withdrawal_experience": {
+    "overall_rating": "A+",
+    "common_delays": [
+      "Polygon network congestion",
+      "Uniswap bridge pool temporarily drained"
+    ],
+    "rollover_rules": "None. Funds are always liquid unless locked in open market positions.",
+    "cancellation_window": "Crypto transactions cannot be reversed once broadcast to the network."
+  },
+  "board": {
+    "name": "Polymarket",
+    "jurisdiction": "Decentralized (DeFi)",
+    "license": "Unlicensed (Smart Contract Protocol)"
+  },
+  "faqs": [
+    {
+      "question": "How do I withdraw from Polymarket?",
+      "answer": "You withdraw USDC directly to your Web3 wallet, or to a centralized exchange that supports Polygon network deposits."
+    },
+    {
+      "question": "What are Polymarket withdrawal fees?",
+      "answer": "Polymarket does not charge withdrawal fees. You only pay standard Polygon network gas fees, which are typically fractions of a cent."
+    },
+    {
+      "question": "Can I withdraw to my bank account from Polymarket?",
+      "answer": "No, you must withdraw USDC to a crypto exchange (like Coinbase) first, sell the USDC for USD, and then initiate an ACH transfer to your bank."
+    }
+  ]
+}

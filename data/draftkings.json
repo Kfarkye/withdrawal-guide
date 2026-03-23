@@ -1,0 +1,116 @@
+{
+  "slug": "draftkings",
+  "platform_name": "DraftKings",
+  "platform_type": "regulated",
+  "regulated": true,
+  "jurisdictions": {
+    "operating_model": "whitelist",
+    "states": [
+      "AZ", "CO", "CT", "DC", "IA", "IL", "IN", "KS", "KY",
+      "LA", "MA", "MD", "ME", "MI", "NC", "NH", "NJ", "NY",
+      "OH", "OR", "PA", "TN", "VA", "VT", "WA", "WV", "WY"
+    ]
+  },
+  "audit": {
+    "last_verified": "2026-03-22",
+    "data_sources": [
+      "DraftKings Official Help Center (2026)",
+      "NJDGE Public License Registry"
+    ]
+  },
+  "authorship": {
+    "author_name": "WithdrawalGuide Data Desk",
+    "reviewer_name": "Jane Doe, CPA",
+    "organization_url": "https://www.withdrawalguide.com/"
+  },
+  "seo": {
+    "title": "DraftKings Withdrawal Times & Limits (2026)",
+    "description": "Learn the fastest ways to withdraw from DraftKings. Breakdown of PayPal, Bank Transfer, and Debit Card limits, times, and rules."
+  },
+  "features": {
+    "allows_corporate_accounts": false,
+    "tax_reporting": {
+      "issues_forms": true,
+      "form_type": "W-2G (Gambling Winnings)",
+      "notes": "DraftKings is legally required to issue W-2G forms for wins exceeding $600 or 300:1 odds. All wins are taxable regardless of form issuance."
+    }
+  },
+  "withdrawal_methods": [
+    {
+      "method": "Debit Card (Visa Direct)",
+      "slug": "debit-card",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0",
+      "processing_hours": 1.0,
+      "processing_display": "Up to 24 hours (often under 1 hr)",
+      "minimum": "$1",
+      "maximum": "$25,000 per transaction",
+      "recommended": true,
+      "pro_tip": "DraftKings enforces a 'Closed-Loop' policy. You MUST have deposited with this exact debit card previously for it to be eligible for withdrawals."
+    },
+    {
+      "method": "PayPal / Venmo",
+      "slug": "paypal",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0",
+      "processing_hours": 4.0,
+      "processing_display": "Up to 48 hours (usually within hours)",
+      "minimum": "$1",
+      "maximum": "$60,000 (PayPal) / $20,000 (Venmo)",
+      "recommended": true,
+      "pro_tip": "Ensure the name on your PayPal account perfectly matches your DraftKings registered name to avoid manual review holds."
+    },
+    {
+      "method": "Online Banking / Trustly",
+      "slug": "online-banking",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "$0",
+      "processing_hours": 120.0,
+      "processing_display": "1-5 Business Days",
+      "minimum": "$1",
+      "maximum": "$100,000 per transaction",
+      "recommended": false,
+      "pro_tip": "DraftKings does not permit withdrawals to business banking accounts. Personal accounts only."
+    }
+  ],
+  "verification": {
+    "kyc_trigger": "Account creation (Mandatory upfront)",
+    "documents_needed": [
+      "Social Security Number (SSN)",
+      "State ID (if automated database fails)"
+    ],
+    "processing_time": "Instant (Automated) / 24-48 hours (Manual)",
+    "pro_tip": "Make sure your registration address matches your public records and banking documents perfectly."
+  },
+  "withdrawal_experience": {
+    "overall_rating": "A+",
+    "common_delays": [
+      "Large wins triggering a manual W-2G tax review",
+      "Attempting to withdraw to a method not used for deposit"
+    ],
+    "rollover_rules": "Deposits must be played through 1x. Bonus bets only pay out the profit, not the initial stake.",
+    "cancellation_window": "Very short. Can cancel pending withdrawals via the withdrawal tracker UI."
+  },
+  "board": {
+    "name": "DraftKings Inc.",
+    "jurisdiction": "USA (Regulated States)",
+    "license": "State Gaming Commissions (NJDGE, PGCB, etc.)"
+  },
+  "faqs": [
+    {
+      "question": "How fast are DraftKings withdrawals?",
+      "answer": "Debit card and PayPal withdrawals typically process in under 24 hours, and often within an hour. Bank wires take up to 2 days, and physical checks can take up to 14 days."
+    },
+    {
+      "question": "Are there fees for withdrawing from DraftKings?",
+      "answer": "No, DraftKings does not charge fees for standard withdrawal methods like PayPal, debit cards, or online banking."
+    },
+    {
+      "question": "Can I withdraw my bonus bets on DraftKings?",
+      "answer": "No. Bonus bets cannot be withdrawn directly. You must wager them, and any profit you make becomes withdrawable cash."
+    }
+  ]
+}
