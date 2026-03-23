@@ -89,9 +89,18 @@
                     </div>
                 </dl>
 
+                {% if method.variants %}
+                <div class="variant-list">
+                    <span class="variant-label">Supported Coins:</span>
+                    {% for v in method.variants %}
+                    <span class="variant-tag" title="{{ v.name }}{% if v.max_note %} — Max {{ v.max_note }}{% endif %}">{{ v.ticker }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if method.pro_tip %}
                 <aside class="alert-box" role="note" aria-label="Security Notice">
-                    <strong class="alert-title">Compliance & Security Note</strong>
+                    <strong class="alert-title">Compliance &amp; Security Note</strong>
                     <p class="alert-body">{{ method.pro_tip }}</p>
                 </aside>
                 {% endif %}

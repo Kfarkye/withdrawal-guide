@@ -1,0 +1,153 @@
+{
+  "slug": "betonline",
+  "platform_name": "BetOnline",
+  "platform_type": "offshore",
+  "regulated": false,
+  "jurisdictions": {
+    "operating_model": "blacklist",
+    "states": ["NJ", "NY"]
+  },
+  "audit": {
+    "last_verified": "2026-03-22",
+    "data_sources": [
+      "BetOnline.ag Official Cashier & Help Center (2026)",
+      "Panama Gaming Commission Records"
+    ]
+  },
+  "authorship": {
+    "author_name": "WithdrawalGuide Data Desk",
+    "reviewer_name": "Jane Doe, CPA",
+    "organization_url": "https://www.withdrawalguide.com/"
+  },
+  "seo": {
+    "title": "BetOnline Withdrawal Guide 2026 | Crypto, Wire & Check Limits",
+    "description": "Complete BetOnline.ag withdrawal breakdown — 15+ crypto options, bank wire, and check by courier. Fees, limits, processing times, and KYC requirements for 2026."
+  },
+  "features": {
+    "allows_corporate_accounts": false,
+    "tax_reporting": {
+      "issues_forms": false,
+      "form_type": "None (Offshore — Self-Report)",
+      "notes": "BetOnline does not issue W-2G or 1099 forms. US taxpayers must self-report all gambling winnings on Schedule 1 / Form 1040."
+    }
+  },
+  "withdrawal_methods": [
+    {
+      "method": "Tier 1 Crypto (High Limit)",
+      "slug": "tier-1-crypto",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "Free (network gas only)",
+      "processing_hours": 24.0,
+      "processing_display": "Within 24 hours",
+      "minimum": "$20",
+      "maximum": "$500,000",
+      "recommended": true,
+      "variants": [
+        {"name": "Bitcoin", "ticker": "BTC"},
+        {"name": "Bitcoin Cash", "ticker": "BCH"},
+        {"name": "Ethereum", "ticker": "ETH"},
+        {"name": "Litecoin", "ticker": "LTC"},
+        {"name": "Tether", "ticker": "USDT"},
+        {"name": "USDCoin", "ticker": "USDC"}
+      ],
+      "pro_tip": "BTC, ETH, and USDT offer the highest withdrawal limits ($500K). For fastest settlement, use Litecoin — near-zero network fees and sub-minute confirmations. Always withdraw to a non-custodial wallet first."
+    },
+    {
+      "method": "Altcoin Crypto (Standard Limit)",
+      "slug": "altcoin-crypto",
+      "available": true,
+      "fee_amount": 0.0,
+      "fee_display": "Free (network gas only)",
+      "processing_hours": 24.0,
+      "processing_display": "Within 24 hours",
+      "minimum": "$20",
+      "maximum": "$10,000 – $25,000",
+      "recommended": false,
+      "variants": [
+        {"name": "Cardano", "ticker": "ADA", "max_note": "$25,000"},
+        {"name": "Avalanche", "ticker": "AVAX", "max_note": "$10,000"},
+        {"name": "Binance Coin", "ticker": "BNB", "max_note": "$10,000"},
+        {"name": "Dogecoin", "ticker": "DOGE", "max_note": "$10,000"},
+        {"name": "Polygon", "ticker": "MATIC", "max_note": "$10,000"},
+        {"name": "Ripple", "ticker": "XRP", "max_note": "$10,000"},
+        {"name": "Shiba Inu", "ticker": "SHIB", "max_note": "$10,000"},
+        {"name": "Solana", "ticker": "SOL", "max_note": "$10,000"},
+        {"name": "Stellar", "ticker": "XLM", "max_note": "$10,000"},
+        {"name": "Tron", "ticker": "TRX", "max_note": "$10,000"},
+        {"name": "Official Trump", "ticker": "TRUMP", "max_note": "$10,000"}
+      ],
+      "pro_tip": "Cardano (ADA) has the highest altcoin limit at $25K. For smaller payouts, Solana and Stellar offer near-instant on-chain finality with minimal gas fees."
+    },
+    {
+      "method": "Bank Wire Transfer",
+      "slug": "bank-wire",
+      "available": true,
+      "fee_amount": 45.0,
+      "fee_display": "$45 – 3%",
+      "processing_hours": 168.0,
+      "processing_display": "5-7 Business Days (up to 15)",
+      "minimum": "$500",
+      "maximum": "$25,000",
+      "recommended": false,
+      "pro_tip": "Intermediary bank fees of $15-$40 may apply on top of BetOnline's fee. Contact your bank to confirm they accept international wires from gaming operators."
+    },
+    {
+      "method": "Check by Courier",
+      "slug": "check-courier",
+      "available": true,
+      "fee_amount": 50.0,
+      "fee_display": "$50",
+      "processing_hours": 360.0,
+      "processing_display": "7-15 Business Days",
+      "minimum": "$500",
+      "maximum": "$5,000",
+      "recommended": false,
+      "pro_tip": "Checks are drawn on foreign banks. Expect a 5-10 day hold at your US bank. This is the slowest and most expensive withdrawal method — crypto is strongly recommended."
+    }
+  ],
+  "verification": {
+    "kyc_trigger": "First withdrawal or upon account review",
+    "documents_needed": [
+      "Government-issued photo ID",
+      "Utility bill or bank statement (proof of address)",
+      "Front/back of credit card (if used for deposit)"
+    ],
+    "processing_time": "24-48 hours",
+    "pro_tip": "Upload your KYC documents immediately after registration. BetOnline requires this before any withdrawal is processed — waiting until cashout time adds 24-48 hours of delay."
+  },
+  "withdrawal_experience": {
+    "overall_rating": "A-",
+    "common_delays": [
+      "Incomplete KYC documentation",
+      "Attempting withdrawal before 1x rollover on deposited funds",
+      "3-day hold after credit/debit card deposits",
+      "7-day hold after e-check deposits"
+    ],
+    "rollover_rules": "All deposited funds require a 1x rollover before withdrawal regardless of method. Withdrawing before completion incurs processing fees.",
+    "cancellation_window": "Withdrawal can be reversed while in 'Pending' status (typically 12-24 hours)."
+  },
+  "board": {
+    "name": "BetOnline (operated by TGB Group)",
+    "jurisdiction": "Panama",
+    "license": "Panama Gaming Control Board"
+  },
+  "faqs": [
+    {
+      "question": "How many crypto withdrawal options does BetOnline have?",
+      "answer": "BetOnline supports 17+ cryptocurrencies including Bitcoin, Ethereum, Litecoin, USDT, USDC, Cardano, Solana, XRP, Dogecoin, Avalanche, Binance Coin, Polygon, Stellar, Tron, Shiba Inu, and even memecoin TRUMP. All crypto withdrawals are free with a $20 minimum."
+    },
+    {
+      "question": "What is the maximum BetOnline withdrawal?",
+      "answer": "Tier 1 cryptos (BTC, ETH, USDT, USDC, LTC, BCH) support up to $500,000 per withdrawal. Altcoins cap at $10,000-$25,000. Bank wire maxes at $25,000, and checks cap at $5,000."
+    },
+    {
+      "question": "Does BetOnline charge withdrawal fees?",
+      "answer": "All cryptocurrency withdrawals are fee-free (you only pay blockchain network gas). Bank wires cost $45 to 3% plus potential intermediary bank fees. Check by courier is $50 flat."
+    },
+    {
+      "question": "Why is my BetOnline withdrawal pending?",
+      "answer": "The most common causes are: incomplete KYC verification, not meeting the 1x rollover requirement on deposits, or the mandatory 3-day hold after credit card deposits (7 days for e-checks)."
+    }
+  ]
+}
